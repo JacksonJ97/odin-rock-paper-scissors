@@ -5,39 +5,29 @@ function computerPlay() {
 
 computerPlay();
 
-// function playRound(playerSelection, computerSelection) {
-//   let result = "";
+function playRound(playerSelection, computerSelection) {
+  playerSelection = playerSelection.toLowerCase();
+  let result = "";
 
-//   if (playerSelection === "rock" && computerSelection === "rock") {
-//     result = "Draw";
-//   }
-//   if (playerSelection === "rock" && computerSelection === "paper") {
-//     result = "You lose";
-//   }
-//   if (playerSelection === "rock" && computerSelection === "scissors") {
-//     result = "You win";
-//   }
-//   if (playerSelection === "paper" && computerSelection === "rock") {
-//     result = "You win";
-//   }
-//   if (playerSelection === "paper" && computerSelection === "paper") {
-//     result = "Draw";
-//   }
-//   if (playerSelection === "paper" && computerSelection === "scissors") {
-//     result = "You lose";
-//   }
-//   if (playerSelection === "scissors" && computerSelection === "rock") {
-//     result = "You lose";
-//   }
-//   if (playerSelection === "scissors" && computerSelection === "paper") {
-//     result = "You win";
-//   }
-//   if (playerSelection === "scissors" && computerSelection === "scissors") {
-//     result = "Draw";
-//   }
-//   console.log(computerSelection);
-//   return result;
-// }
+  if (playerSelection === computerSelection) {
+    result = "Draw";
+  }
 
-// const playerSelection = "rock";
-// console.log(playRound(playerSelection, computerPlay()));
+  if (
+    (playerSelection === "rock" && computerSelection === "paper") ||
+    (playerSelection === "paper" && computerSelection === "scissors") ||
+    (playerSelection === "scissors" && computerSelection === "rock")
+  ) {
+    result = "You lose";
+  }
+
+  if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    result = "You win";
+  }
+
+  return result;
+}
