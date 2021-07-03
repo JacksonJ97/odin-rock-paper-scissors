@@ -52,26 +52,10 @@ function resetGame() {
   cpuSelection.textContent = "";
   outcome.textContent = "";
   tryAgain.style.display = "none";
-}
-
-let playerScore = 0;
-let computerScore = 0;
-const inputs = document.querySelectorAll("button");
-const userScore = document.querySelector(".player-score");
-const cpuScore = document.querySelector(".computer-score");
-const userSelection = document.querySelector(".player-selection");
-const cpuSelection = document.querySelector(".computer-selection");
-const outcome = document.querySelector(".result-container");
-const tryAgain = document.createElement("button");
-const tryAgainContainer = document.querySelector(".try-again-container");
-tryAgain.classList.add("try-btn");
-tryAgain.textContent = "Try Again";
-
-inputs.forEach((input, index) => {
-  input.addEventListener("click", function () {
-    game(index);
+  inputs.forEach((input) => {
+    input.disabled = false;
   });
-});
+}
 
 function game(index) {
   playerSelection = userPlay(index);
@@ -99,8 +83,31 @@ function game(index) {
       outcome.textContent = "You lose the game.";
     }
 
+    inputs.forEach((input) => {
+      input.disabled = true;
+    });
+
     tryAgainContainer.appendChild(tryAgain);
     tryAgain.style.display = "block";
     tryAgain.addEventListener("click", resetGame);
   }
 }
+
+let playerScore = 0;
+let computerScore = 0;
+const inputs = document.querySelectorAll("button");
+const userScore = document.querySelector(".player-score");
+const cpuScore = document.querySelector(".computer-score");
+const userSelection = document.querySelector(".player-selection");
+const cpuSelection = document.querySelector(".computer-selection");
+const outcome = document.querySelector(".result-container");
+const tryAgainContainer = document.querySelector(".try-again-container");
+const tryAgain = document.createElement("button");
+tryAgain.classList.add("try-btn");
+tryAgain.textContent = "Try Again";
+
+inputs.forEach((input, index) => {
+  input.addEventListener("click", function () {
+    game(index);
+  });
+});
