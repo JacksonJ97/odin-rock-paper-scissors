@@ -13,3 +13,7 @@ Rock paper scissors game built with a general UI. A player plays against a compu
 ### What I learned
 
 I learned how to manipulate the DOM by selecting elements and using them to make user inputs such as picking rock, paper, scissors, or try again. I also learned how to create elements and use it when needed to through JavaScript.
+
+### Live URL
+
+https://odin-rock-paper-scissors-murex.vercel.app/
