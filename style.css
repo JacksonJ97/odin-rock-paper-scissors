@@ -53,12 +53,12 @@ body {
   text-align: center;
 }
 
-.try-again-container {
+.play-again-container {
   display: flex;
   justify-content: center;
 }
 
-.try-btn {
+.play-btn {
   padding: 1em 2em;
   margin-top: 2em;
   background-color: #ffffff;
@@ -67,6 +67,6 @@ body {
   cursor: pointer;
 }
 
-.try-btn:hover {
+.play-btn:hover {
   background-color: #b1b1b1;
 }

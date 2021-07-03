@@ -51,7 +51,7 @@ function resetGame() {
   userSelection.textContent = "";
   cpuSelection.textContent = "";
   outcome.textContent = "";
-  tryAgain.style.display = "none";
+  playAgain.style.display = "none";
   inputs.forEach((input) => {
     input.disabled = false;
   });
@@ -87,9 +87,9 @@ function game(index) {
       input.disabled = true;
     });
 
-    tryAgainContainer.appendChild(tryAgain);
-    tryAgain.style.display = "block";
-    tryAgain.addEventListener("click", resetGame);
+    playAgainContainer.appendChild(playAgain);
+    playAgain.style.display = "block";
+    playAgain.addEventListener("click", resetGame);
   }
 }
 
@@ -101,10 +101,10 @@ const cpuScore = document.querySelector(".computer-score");
 const userSelection = document.querySelector(".player-selection");
 const cpuSelection = document.querySelector(".computer-selection");
 const outcome = document.querySelector(".result-container");
-const tryAgainContainer = document.querySelector(".try-again-container");
-const tryAgain = document.createElement("button");
-tryAgain.classList.add("try-btn");
-tryAgain.textContent = "Try Again";
+const playAgainContainer = document.querySelector(".play-again-container");
+const playAgain = document.createElement("button");
+playAgain.classList.add("play-btn");
+playAgain.textContent = "Play Again";
 
 inputs.forEach((input, index) => {
   input.addEventListener("click", function () {
