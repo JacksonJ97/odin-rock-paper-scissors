@@ -63,48 +63,44 @@ const userSelection = document.querySelector(".player-selection");
 const cpuSelection = document.querySelector(".computer-selection");
 const outcome = document.querySelector(".result-container");
 const tryAgain = document.createElement("button");
-const container = document.querySelector(".container");
+const tryAgainContainer = document.querySelector(".try-again-container");
 tryAgain.classList.add("try-btn");
 tryAgain.textContent = "Try Again";
 
 inputs.forEach((input, index) => {
   input.addEventListener("click", function () {
-    playerSelection = userPlay(index);
-    computerSelection = computerPlay();
-    result = playRound(playerSelection, computerSelection);
-
-    if (result === "You win") {
-      playerScore++;
-    }
-
-    if (result === "You lose") {
-      computerScore++;
-    }
-
-    userScore.textContent = `Player: ${playerScore}`;
-    cpuScore.textContent = `Computer: ${computerScore}`;
-    userSelection.innerHTML = `<i class="far fa-hand-${playerSelection}"></i>`;
-    cpuSelection.innerHTML = `<i class="far fa-hand-${computerSelection}"></i>`;
-    outcome.textContent = result;
-
-    if (playerScore === 5 || computerScore === 5) {
-      if (playerScore === 5) {
-        outcome.textContent = "You win the game!";
-      } else {
-        outcome.textContent = "You lose the game.";
-      }
-
-      container.appendChild(tryAgain);
-      tryAgain.style.display = "block";
-      tryAgain.addEventListener("click", resetGame);
-    }
-
-    // if (playerScore === 5 && computerScore != 6) {
-    //   resetGame();
-    // }
-
-    // if (playerScore != 6 && computerScore === 5) {
-    //   resetGame();
-    // }
+    game(index);
   });
 });
+
+function game(index) {
+  playerSelection = userPlay(index);
+  computerSelection = computerPlay();
+  result = playRound(playerSelection, computerSelection);
+
+  if (result === "You win") {
+    playerScore++;
+  }
+
+  if (result === "You lose") {
+    computerScore++;
+  }
+
+  userScore.textContent = `Player: ${playerScore}`;
+  cpuScore.textContent = `Computer: ${computerScore}`;
+  userSelection.innerHTML = `<i class="far fa-hand-${playerSelection}"></i>`;
+  cpuSelection.innerHTML = `<i class="far fa-hand-${computerSelection}"></i>`;
+  outcome.textContent = result;
+
+  if (playerScore === 5 || computerScore === 5) {
+    if (playerScore === 5) {
+      outcome.textContent = "You win the game!";
+    } else {
+      outcome.textContent = "You lose the game.";
+    }
+
+    tryAgainContainer.appendChild(tryAgain);
+    tryAgain.style.display = "block";
+    tryAgain.addEventListener("click", resetGame);
+  }
+}
