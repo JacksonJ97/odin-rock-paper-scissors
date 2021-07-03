@@ -3,15 +3,23 @@ function computerPlay() {
   return choice[Math.floor(Math.random() * 3)];
 }
 
-function userPlay() {
-  const input = prompt("Rock, Paper, or Scissors");
-  return input;
+function userPlay(index) {
+  if (index === 0) {
+    playerSelection = "rock";
+  }
+
+  if (index === 1) {
+    playerSelection = "paper";
+  }
+
+  if (index === 2) {
+    playerSelection = "scissors";
+  }
+
+  return playerSelection;
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
-  let result = "";
-
   if (playerSelection === computerSelection) {
     result = "Draw";
   }
@@ -35,14 +43,35 @@ function playRound(playerSelection, computerSelection) {
   return result;
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+  userScore.textContent = `Player: ${playerScore}`;
+  cpuScore.textContent = `Computer: ${computerScore}`;
+  userSelection.textContent = "";
+  cpuSelection.textContent = "";
+  outcome.textContent = "";
+  tryAgain.style.display = "none";
+}
 
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = userPlay();
-    const computerSelection = computerPlay();
-    const result = playRound(playerSelection, computerSelection);
+let playerScore = 0;
+let computerScore = 0;
+const inputs = document.querySelectorAll("button");
+const userScore = document.querySelector(".player-score");
+const cpuScore = document.querySelector(".computer-score");
+const userSelection = document.querySelector(".player-selection");
+const cpuSelection = document.querySelector(".computer-selection");
+const outcome = document.querySelector(".result-container");
+const tryAgain = document.createElement("button");
+const container = document.querySelector(".container");
+tryAgain.classList.add("try-btn");
+tryAgain.textContent = "Try Again";
+
+inputs.forEach((input, index) => {
+  input.addEventListener("click", function () {
+    playerSelection = userPlay(index);
+    computerSelection = computerPlay();
+    result = playRound(playerSelection, computerSelection);
 
     if (result === "You win") {
       playerScore++;
@@ -52,20 +81,30 @@ function game() {
       computerScore++;
     }
 
-    console.log(playerSelection);
-    console.log(computerSelection);
-    console.log(result);
-    console.log(playerScore);
-    console.log(computerScore);
-  }
+    userScore.textContent = `Player: ${playerScore}`;
+    cpuScore.textContent = `Computer: ${computerScore}`;
+    userSelection.innerHTML = `<i class="far fa-hand-${playerSelection}"></i>`;
+    cpuSelection.innerHTML = `<i class="far fa-hand-${computerSelection}"></i>`;
+    outcome.textContent = result;
 
-  if (playerScore > computerScore) {
-    console.log("You win the game!");
-  } else if (playerScore < computerScore) {
-    console.log("You lost the game.");
-  } else {
-    console.log("Tie game");
-  }
-}
+    if (playerScore === 5 || computerScore === 5) {
+      if (playerScore === 5) {
+        outcome.textContent = "You win the game!";
+      } else {
+        outcome.textContent = "You lose the game.";
+      }
 
-game();
+      container.appendChild(tryAgain);
+      tryAgain.style.display = "block";
+      tryAgain.addEventListener("click", resetGame);
+    }
+
+    // if (playerScore === 5 && computerScore != 6) {
+    //   resetGame();
+    // }
+
+    // if (playerScore != 6 && computerScore === 5) {
+    //   resetGame();
+    // }
+  });
+});

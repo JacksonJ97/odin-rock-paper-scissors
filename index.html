@@ -4,8 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/2204d85ae9.js" crossorigin="anonymous"></script>
+    <title>Rock Paper Scissors</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <button class="btn"><i class="far fa-hand-rock"></i></button>
+      <button class="btn"><i class="far fa-hand-paper"></i></button>
+      <button class="btn"><i class="far fa-hand-scissors"></i></button>
+
+      <div class="score-container">
+        <div class="player-score">Player: 0</div>
+        <div class="computer-score">Computer: 0</div>
+      </div>
+
+      <div class="selection-container">
+        <div class="player-selection"></div>
+        <div class="computer-selection"></div>
+      </div>
+
+      <div class="result-container"></div>
+    </div>
+  </body>
   <script src="index.js"></script>
 </html>
