@@ -13,6 +13,7 @@ body {
 
 .container {
   min-width: 680px;
+  height: 590px;
 }
 
 .btn {

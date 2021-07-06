@@ -3,22 +3,6 @@ function computerPlay() {
   return choice[Math.floor(Math.random() * 3)];
 }
 
-function userPlay(index) {
-  if (index === 0) {
-    playerSelection = "rock";
-  }
-
-  if (index === 1) {
-    playerSelection = "paper";
-  }
-
-  if (index === 2) {
-    playerSelection = "scissors";
-  }
-
-  return playerSelection;
-}
-
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     result = "Draw";
@@ -57,9 +41,7 @@ function resetGame() {
   });
 }
 
-function game(index) {
-  playerSelection = userPlay(index);
-  computerSelection = computerPlay();
+function game(playerSelection, computerSelection) {
   result = playRound(playerSelection, computerSelection);
 
   if (result === "You win") {
@@ -106,8 +88,10 @@ const playAgain = document.createElement("button");
 playAgain.classList.add("play-btn");
 playAgain.textContent = "Play Again";
 
-inputs.forEach((input, index) => {
+inputs.forEach((input) => {
   input.addEventListener("click", function () {
-    game(index);
+    playerSelection = input.value;
+    computerSelection = computerPlay();
+    game(playerSelection, computerSelection);
   });
 });
