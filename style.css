@@ -12,13 +12,17 @@ body {
 }
 
 .container {
-  min-width: 680px;
+  width: 90%;
   height: 590px;
+}
+
+.button-container {
+  text-align: center;
 }
 
 .btn {
   padding: 2em;
-  margin: 6em 4em;
+  margin: 3em 3em;
   background-color: #ffffff;
   border: 1px solid #818181;
   border-radius: 8px;
@@ -70,4 +74,10 @@ body {
 
 .play-btn:hover {
   background-color: #b1b1b1;
+}
+
+@media (max-width: 475px) {
+  .btn {
+    margin: 1em;
+  }
 }
