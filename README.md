@@ -16,4 +16,4 @@ I learned how to manipulate the DOM by selecting elements and using them to make
 
 ### Live URL
 
-https://odin-rock-paper-scissors-murex.vercel.app/
+https://jacksonj97-rock-paper-scissors.vercel.app/
